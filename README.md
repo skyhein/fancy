@@ -1,13 +1,14 @@
 # fancy
 Raspberry Pi PWM Fan Control Service
 
+Hardware prerequisites: Rspberry PI and 5V-fan with pwm pin.
+Software prerequisites: Debian Buster, Python 3, bash
+
 For installation type:
 
 sudo ./install.sh
 
 Configuration goes to /etc/fancy.conf.
-
-Hardware needed: 5V fan with pwm pin.
 
 Fan installation (Pin 8 is GPIO 14):
 
