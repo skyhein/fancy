@@ -1,0 +1,12 @@
+[Unit]
+Description=Heins Fancy Fan Control
+ConditionPathExists=!/etc/dontstartfancy
+
+[Service]
+Type=simple
+User=root
+ExecStart=/usr/bin/python3 /usr/local/bin/fancy.py
+Restart=always
+
+[Install]
+WantedBy=default.target
