@@ -10,7 +10,7 @@ import configparser
 
 
 LOGLEVEL =      1  # 0: silent, 1: important msgs, 2: verbose, 3: very verbose
-FAN_GPIO =       14 # Pin 8, Pin 4 = +5V, Pin 6 = Gnd
+FAN_GPIO =      14 # Pin 8, Pin 4 = +5V, Pin 6 = Gnd
 WAIT_TIME =     10 # s
 
 PWM_FREQ =      50 # Hz
