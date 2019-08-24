@@ -6,7 +6,7 @@ Software prerequisites: Debian Buster, Python 3, bash
 
 For installation type:
 
-sudo ./install.sh
+sudo bash ./install.sh
 
 Configuration goes to /etc/fancy.conf.
 
