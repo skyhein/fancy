@@ -13,6 +13,7 @@ fi
 cp fancy.conf /etc/fancy.conf
 cp fancy.service /lib/systemd/system/fancy.service
 cp fancy.py /usr/local/bin/fancy.py
+chmod +x /usr/local/bin/fancy.py
 
 systemctl enable fancy
 systemctl restart fancy
