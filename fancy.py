@@ -37,39 +37,28 @@ default = parser["Default"]
 
 try:
     LOGLEVEL=int(default["LOGLEVEL"].split('#')[0])
-except KeyError:
-    pass
-except ValueError:
+except:
     pass
 
 try:
     WAIT_TIME=int(default["WAIT_TIME"].split('#')[0])
-except KeyError:
-    pass
-except ValueError:
+except:
     pass
 
 try:
     FAN_GPIO=int(default["FAN_GPIO"].split('#')[0])
-except KeyError:
-    pass
-except ValueError:
+except:
     pass
 
 try:
     MIN_TEMP=int(default["MIN_TEMP"].split('#')[0])
-except KeyError:
-    pass
-except ValueError:
+except:
     pass
 
 try:
     MAX_TEMP=int(default["MAX_TEMP"].split('#')[0])
-except KeyError:
+except:
     pass
-except ValueError:
-    pass
-
 
 signal.signal(signal.SIGTERM, endProg)
 GPIO.setmode(GPIO.BCM)
