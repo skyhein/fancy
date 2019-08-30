@@ -24,10 +24,10 @@ CONF_FILE_STR = "/etc/fancy.conf"
 def log(verboselevel, message):
     if verboselevel <= LOGLEVEL:
         with open(LOGFILE_STR, "a+") as logfile:
-            logfile.write(datetime.now().strftime("%Y-%m-%d %H:%M:%S ") + message)
+            logfile.write(datetime.now().strftime("%Y-%m-%d %H:%M:%S ") + message + "\n")
 
 def endProg(error = 0):
-    log(1, "Fancy will end now, cleaning up.\n")
+    log(1, "Fancy will end now, cleaning up.")
     GPIO.cleanup()
     sys.exit(error)
 
@@ -67,13 +67,13 @@ GPIO.setup(FAN_GPIO, GPIO.OUT, initial = GPIO.LOW)
 fan = GPIO.PWM(FAN_GPIO, PWM_FREQ)
 fan.start(0);
 
-log(1, "Starting up fancy.\n")
-log(1, "Log level: " + str(LOGLEVEL) + ", GPIO: " + str(FAN_GPIO) + ", Interval: " + str(WAIT_TIME) + "\n")
-log(1, "Min temperature: " + str(MIN_TEMP) + "°C, Max temperature: " + str(MAX_TEMP) + "°C\n")
+log(1, "Starting up fancy.")
+log(1, "Log level: {:d}, GPIO: {:d}, Interval: {:d} ".format(LOGLEVEL, FAN_GPIO, WAIT_TIME))
+log(1, "Min temperature: {:d}°C, Max temperature: {:d}°C".format(MIN_TEMP, MAX_TEMP))
 lastspeed = 0
 
 if (MIN_TEMP >= MAX_TEMP):
-    log(0, "Min temperature should be smaller than max temperature!\n")
+    log(0, "Min temperature should be smaller than max temperature!")
     endProg(1)
 
 try:
@@ -94,10 +94,10 @@ try:
            (speed < lastspeed - THRESHOLD) or \
            (speed == 100 and lastspeed < 100) or \
            (speed == 0 and lastspeed > 0):
-            log(2, "Temp: " + str(temp) + "°C, Fanspeed: " + str(speed) + "%\n")
+            log(2, "Temp: {:4.1f}°C, Fanspeed: {:3d}%".format(temp, speed))
             lastspeed = speed
         else:
-            log(3, "Temp: " + str(temp) + "°C, Fanspeed: " + str(speed) + "%\n")
+            log(3, "Temp: {:4.1f}°C, Fanspeed: {:3d}%".format(temp, speed))
 
         fan.ChangeDutyCycle(speed)
         time.sleep(WAIT_TIME)
