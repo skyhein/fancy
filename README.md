@@ -15,7 +15,7 @@ Fan installation (Pin 8 is GPIO 14):
 ____________________     
 |                  |      Fan
 |  Raspi       1 2 |
-|              2 4-|----  +5V
+|              3 4-|----  +5V
 |              5 6-|----- GND
 |              7 8-|----- PWM
 |                  |
