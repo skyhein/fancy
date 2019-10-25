@@ -25,9 +25,10 @@ Fan installation (Pin 8 is GPIO 14):
 
 3 color LED installation:
 
-    ~~~~~~~~~~~~~~~~~~~~
-    |  Raspi     15 16-|---[220R]---[red LED anode]---+
-    |            17 18-|---[220R]---[green LED] anode-|
-    |            19 20-|------[LED kathode]-----------|
-    |            21 22-|---[220R]---[blue LED anode]--+
+    ~~~~~~~~~~~~~~~~~~~~             RGB LED
+    |                  |
+    |  Raspi     15 16-|---[220R]---[red LED anode
+    |            17 18-|---[220R]---[green LED anode
+    |            19 20-|------------[LED kathode
+    |            21 22-|---[220R]---[blue LED anode
     ~~~~~~~~~~~~~~~~~~~~
