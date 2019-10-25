@@ -7,9 +7,10 @@ import signal
 import sys
 
 DEBUG = False
-RED_LED_PIN =   23
-GREEN_LED_PIN = 24
-BLUE_LED_PIN =  25
+TACHO_GPIO =     15
+RED_LED_GPIO =   23
+GREEN_LED_GPIO = 24
+BLUE_LED_GPIO =  25
 
 def endProg(error = 0):
     print("rpm will end now, cleaning up.")
@@ -42,14 +43,14 @@ def setLeds(rpm):
 
 try:
     GPIO.setmode(GPIO.BCM)
-    GPIO.setup(15, GPIO.IN, GPIO.PUD_UP)
-    GPIO.add_event_detect(15, GPIO.FALLING, callback = falling_cb)
-    GPIO.setup(RED_LED_PIN, GPIO.OUT, initial = GPIO.HIGH)
-    GPIO.setup(GREEN_LED_PIN, GPIO.OUT, initial = GPIO.HIGH)
-    GPIO.setup(BLUE_LED_PIN, GPIO.OUT, initial = GPIO.HIGH)
-    red_led = GPIO.PWM(RED_LED_PIN, 100)
-    green_led = GPIO.PWM(GREEN_LED_PIN, 100)
-    blue_led = GPIO.PWM(BLUE_LED_PIN, 100)
+    GPIO.setup(TACHO_GPIO, GPIO.IN, GPIO.PUD_UP)
+    GPIO.add_event_detect(TACHO_GPIO, GPIO.FALLING, callback = falling_cb)
+    GPIO.setup(RED_LED_GPIO, GPIO.OUT, initial = GPIO.HIGH)
+    GPIO.setup(GREEN_LED_GPIO, GPIO.OUT, initial = GPIO.HIGH)
+    GPIO.setup(BLUE_LED_GPIO, GPIO.OUT, initial = GPIO.HIGH)
+    red_led = GPIO.PWM(RED_LED_GPIO, 100)
+    green_led = GPIO.PWM(GREEN_LED_GPIO, 100)
+    blue_led = GPIO.PWM(BLUE_LED_GPIO, 100)
     red_led.start(0)
     green_led.start(0)
     blue_led.start(0)
