@@ -29,8 +29,8 @@ Fan installation (Pin 8 is GPIO 14):
     |  Raspi      9 10-|------------Fan tacho
     |            11 12 |
     |            13 14 |
-    |            15 16-|---[220R]---red LED anode
-    |            17 18-|---[220R]---green LED anode
-    |            19 20-|------------LED kathode
-    |            21 22-|---[220R]---blue LED anode
+    |            15 16-|---[220R]---red LED cathode
+    |            17 18-|---[220R]---green LED cathode
+    |             \----|------------LED anode
+    |            21 22-|---[220R]---blue LED cathode
     ~~~~~~~~~~~~~~~~~~~~
