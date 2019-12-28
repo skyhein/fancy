@@ -1,5 +1,5 @@
 [Unit]
-Description=Heins Fancy Fan Control
+Description=Fancy Fan Control
 ConditionPathExists=!/etc/dontstartfancy
 
 [Service]
