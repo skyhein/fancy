@@ -1,0 +1,12 @@
+[Unit]
+Description=rpm-LED Control
+ConditionPathExists=!/etc/dontstartrpmled
+
+[Service]
+Type=simple
+User=root
+ExecStart=/usr/bin/python3 /usr/local/bin/rpmled.py
+Restart=always
+
+[Install]
+WantedBy=default.target

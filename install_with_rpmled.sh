@@ -24,12 +24,12 @@ systemctl restart fancy
 if [ "$answer" == "n" -o "$answer" == "N" ] 
 then
     echo "disabling rpm service"
-    systemctl stop rpm
-    systemctl disable rpm
+    systemctl stop rpmled
+    systemctl disable rpmled
 else
-    cp rpm.service /lib/systemd/system/rpm.service
-    cp rpm.py /usr/local/bin/rpm.py
-    chmod +x /usr/local/bin/rpm.py
-    systemctl enable rpm
-    systemctl restart rpm
+    cp rpmled.service /lib/systemd/system/rpmled.service
+    cp rpmled.py /usr/local/bin/rpmled.py
+    chmod +x /usr/local/bin/rpmled.py
+    systemctl enable rpmled
+    systemctl restart rpmled
 fi
