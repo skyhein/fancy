@@ -31,7 +31,7 @@ def falling_cb(channel):
 def setLeds(rpm):
     mm = 2500
     if rpm > mm * 2:
-        rpm = mm *2
+        rpm = mm * 2
     if (rpm < mm):
         red_led.ChangeDutyCycle(100)
         green_led.ChangeDutyCycle(100 - rpm / mm * 100)
