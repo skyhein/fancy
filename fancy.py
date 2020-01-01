@@ -9,7 +9,7 @@ import configparser
 
 
 LOGLEVEL =      1  # 0: silent, 1: important msgs, 2: verbose, 3: very verbose
-FAN_GPIO =      14 # Pin 8, Pin 4 = +5V, Pin 6 = Gnd
+PWM_GPIO =      14 # Pin 8, Pin 4 = +5V, Pin 6 = Gnd
 WAIT_TIME =     10 # s
 MIN_TEMP =      40 # °C
 MAX_TEMP =      50 # °C
@@ -36,38 +36,23 @@ default = parser["Default"]
 
 try:
     LOGLEVEL=int(default["LOGLEVEL"].split('#')[0])
-except:
-    pass
-
-try:
     WAIT_TIME=int(default["WAIT_TIME"].split('#')[0])
-except:
-    pass
-
-try:
-    FAN_GPIO=int(default["FAN_GPIO"].split('#')[0])
-except:
-    pass
-
-try:
+    PWM_GPIO=int(default["PWM_GPIO"].split('#')[0])
     MIN_TEMP=int(default["MIN_TEMP"].split('#')[0])
-except:
-    pass
-
-try:
     MAX_TEMP=int(default["MAX_TEMP"].split('#')[0])
 except:
-    pass
+    log(0, "Parse error in fancy.conf.")
+    sys.exit(1)
 
 signal.signal(signal.SIGTERM, endProg)
 GPIO.setmode(GPIO.BCM)
-GPIO.setup(FAN_GPIO, GPIO.OUT, initial = GPIO.LOW)
+GPIO.setup(PWM_GPIO, GPIO.OUT, initial = GPIO.LOW)
 
-fan = GPIO.PWM(FAN_GPIO, PWM_FREQ)
+fan = GPIO.PWM(PWM_GPIO, PWM_FREQ)
 fan.start(0);
 
 log(1, "Starting up fancy.")
-log(1, "Log level: {:d}, GPIO: {:d}, Interval: {:d} ".format(LOGLEVEL, FAN_GPIO, WAIT_TIME))
+log(1, "Log level: {:d}, GPIO: {:d}, Interval: {:d} ".format(LOGLEVEL, PWM_GPIO, WAIT_TIME))
 log(1, "Min temperature: {:d}°C, Max temperature: {:d}°C".format(MIN_TEMP, MAX_TEMP))
 lastspeed = 0
 
