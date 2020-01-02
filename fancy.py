@@ -35,11 +35,11 @@ parser.read(CONF_FILE_STR)
 default = parser["Default"]
 
 try:
-    LOGLEVEL=int(default["LOGLEVEL"].split('#')[0])
-    WAIT_TIME=int(default["WAIT_TIME"].split('#')[0])
-    PWM_GPIO=int(default["PWM_GPIO"].split('#')[0])
-    MIN_TEMP=int(default["MIN_TEMP"].split('#')[0])
-    MAX_TEMP=int(default["MAX_TEMP"].split('#')[0])
+    LOGLEVEL = int(default["LOGLEVEL"].split('#')[0])
+    WAIT_TIME = int(default["WAIT_TIME"].split('#')[0])
+    PWM_GPIO = int(default["PWM_GPIO"].split('#')[0])
+    MIN_TEMP = int(default["MIN_TEMP"].split('#')[0])
+    MAX_TEMP = int(default["MAX_TEMP"].split('#')[0])
 except:
     log(0, "Parse error in fancy.conf.")
     sys.exit(1)
