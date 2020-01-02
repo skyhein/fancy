@@ -5,12 +5,23 @@ import time
 import signal
 import sys
 from datetime import datetime
+import configparser
 
-TACHO_GPIO =     15
+TACHO_GPIO    = 15
+CONF_FILE_STR = "/etc/fancy.conf"
 
 def endProg(error = 0):
     GPIO.cleanup()
     sys.exit(error)
+
+parser = configparser.ConfigParser()
+parser.read(CONF_FILE_STR)
+default = parser["Default"]
+
+try:
+    TACHO_GPIO = int(default["TACHO_GPIO"].split('#')[0])
+except:
+    print("Parse error in fancy.conf")
 
 signal.signal(signal.SIGTERM, endProg)
 
